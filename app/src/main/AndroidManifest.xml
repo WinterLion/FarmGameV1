@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -29,7 +30,8 @@
         <activity
             android:name=".FarmActivity"
             android:label="@string/title_activity_farm"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+            </activity>
         <activity
             android:name=".HelpActivity"
             android:label="@string/title_activity_help"
@@ -38,6 +40,8 @@
             android:name=".HighScoreActivity"
             android:label="@string/title_activity_high_score"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".RegisterActivity" />
     </application>
 
 </manifest>

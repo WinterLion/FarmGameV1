@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="qcox.tacoma.uw.edu.farmgame.FarmFragment">
+
+    <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/silo_shop_button_text"
+    android:id="@+id/silo_button"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:onClick="startSiloList"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HighScore"
+        android:id="@+id/button_goToHighScore"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="viewHighScores"/>
+
+</LinearLayout>
