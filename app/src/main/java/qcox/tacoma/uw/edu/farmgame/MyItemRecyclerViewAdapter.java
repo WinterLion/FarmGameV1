@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import qcox.tacoma.uw.edu.farmgame.ItemFragment.OnListFragmentInteractionListener;
+import qcox.tacoma.uw.edu.farmgame.ItemListFragment.OnListFragmentInteractionListener;
+import qcox.tacoma.uw.edu.farmgame.data.PlayerValues;
 import qcox.tacoma.uw.edu.farmgame.items.ItemContent;
+import qcox.tacoma.uw.edu.farmgame.items.PlantItems;
 
 import java.util.List;
 
@@ -19,10 +21,10 @@ import java.util.List;
  */
 public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
 
-    private final List<ItemContent.FarmItem> mValues;
+    private final List<PlantItems> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyItemRecyclerViewAdapter(List<ItemContent.FarmItem> items, OnListFragmentInteractionListener listener) {
+    public MyItemRecyclerViewAdapter(List<PlantItems> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -37,12 +39,12 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = mValues.get(position);
-        if (mValues.get(position).image != -1) {
-            holder.mItemImageView.setImageResource(mValues.get(position).image);
+        if (mValues.get(position).imageResourceIndex != -1) {
+            holder.mItemImageView.setImageResource(mValues.get(position).imageResourceIndex);
         }
 
         holder.mNameView.setText(mValues.get(position).name);
-        holder.mAmountView.setText("You Have: " + mValues.get(position).quantity);
+        holder.mAmountView.setText("You Have: " + PlayerValues.getItemAmount(mValues.get(position).name));
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +68,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         public final ImageView mItemImageView;
         public final TextView mNameView;
         public final TextView mAmountView;
-        public ItemContent.FarmItem mItem;
+        public PlantItems mItem;
 
         public ViewHolder(View view) {
             super(view);

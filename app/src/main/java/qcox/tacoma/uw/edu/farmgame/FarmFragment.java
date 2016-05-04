@@ -10,7 +10,8 @@ import android.view.ViewGroup;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple {@link Fragment} subclass which currently holds the buttons to the
+ * highscore activity and the itemListfragment that shows the inventory.
  */
 public class FarmFragment extends Fragment {
 
@@ -20,7 +21,7 @@ public class FarmFragment extends Fragment {
         // Required empty public constructor
     }
 
-
+    //this creates the view
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,7 +46,6 @@ public class FarmFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 }

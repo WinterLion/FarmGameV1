@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import qcox.tacoma.uw.edu.farmgame.data.PlayerValues;
 import qcox.tacoma.uw.edu.farmgame.items.ItemContent;
+import qcox.tacoma.uw.edu.farmgame.items.PlantItems;
 
 
 /**
@@ -43,29 +44,30 @@ public class ItemDetailFragment extends Fragment {
         Bundle args = getArguments();
         if (args != null) {
             // Set article based on argument passed in
-            updateCourseItemView((int)args.getInt(ARG_POSITION));
+            updateItemView((int)args.getInt(ARG_POSITION));
         }
     }
-    public void updateCourseItemView(int pos) {
-        if (ItemContent.ITEMS.get(pos).image != -1) {
+    public void updateItemView(int pos) {
+        PlantItems aPlantItem = PlayerValues.getPlantItems(pos);
+        if (aPlantItem.imageResourceIndex != -1) {
             ImageView itemImageView = (ImageView) getActivity().findViewById(R.id.item_detail_image);
-            itemImageView.setImageResource(ItemContent.ITEMS.get(pos).image);
+            itemImageView.setImageResource(aPlantItem.imageResourceIndex);
         }
         TextView moneyTextView = (TextView) getActivity().findViewById(R.id.item_detail_money_amount);
         int money = PlayerValues.mMoney;
         moneyTextView.setText(String.valueOf(money));
         TextView itemNameTextView = (TextView) getActivity().findViewById(R.id.item_detail_name);
-        itemNameTextView.setText(ItemContent.ITEMS.get(pos).name);
+        itemNameTextView.setText(aPlantItem.name);
         TextView itemShortDescTextView = (TextView) getActivity().findViewById(R.id.item_detail_short_desc);
-        itemShortDescTextView.setText(ItemContent.ITEMS.get(pos).description);
+        itemShortDescTextView.setText(aPlantItem.description);
         ((TextView) getActivity().findViewById(R.id.item_detail_amount))
-                .setText("You currently have: " + ItemContent.ITEMS.get(pos).quantity);
+                .setText("You currently have: " + PlayerValues.getItemAmount(aPlantItem.name));
         TextView itemLongDescTextView = (TextView) getActivity().findViewById(R.id.item_detail_long_desc);
         itemLongDescTextView.setText("");
         TextView itemBuyCostTextView = (TextView) getActivity().findViewById(R.id.item_detail_buy_cost);
-        itemBuyCostTextView.setText("Cost to Buy: " + ItemContent.ITEMS.get(pos).buyCost);
+        itemBuyCostTextView.setText("Cost to Buy: " + aPlantItem.buyCost);
         TextView itemSellCostTextView = (TextView) getActivity().findViewById(R.id.item_detail_sell_cost);
-        itemSellCostTextView.setText("Cost to Sell: " + ItemContent.ITEMS.get(pos).sellCost);
+        itemSellCostTextView.setText("Cost to Sell: " + aPlantItem.sellCost);
 //        ((TextView) getActivity().findViewById(R.id.item_detail_pos)).setText(pos);
 
     }

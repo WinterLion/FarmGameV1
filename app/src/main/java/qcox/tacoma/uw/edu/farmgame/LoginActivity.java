@@ -19,6 +19,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import qcox.tacoma.uw.edu.farmgame.data.PlayerValues;
+
 public class LoginActivity extends AppCompatActivity {
 
     private static final String LOGIN_URL
@@ -147,6 +149,7 @@ public class LoginActivity extends AppCompatActivity {
                             && user.getPassword().equals(mUsers.getPassword())){
                         Toast.makeText(getApplicationContext(), "Login success", Toast.LENGTH_LONG).show();
                         found = true;
+                        PlayerValues.setUserName(mUsers.getUsername());
                         Intent intent = new Intent(getApplicationContext(), FarmActivity.class);
                         startActivity(intent);
                         finish();
